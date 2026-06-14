@@ -469,7 +469,7 @@
        ============================================================ -->
   <script>
     // ── Deep-link target (never shown in the UI) ──────────────────
-    var SUCESS_CALLBACK_URL = "appzillon://payment?status=success&message=PaymentSuccess";
+    var SUCCESS_CALLBACK_URL = "appzillon://payment?status=success&message=PaymentSuccess";
     var FAIL_CALLBACK_URL = "appzillon://payment?status=failed&message=PaymentFailed"
 
     // ── Step 1: Page loaded ───────────────────────────────────────
@@ -481,15 +481,15 @@
      * iOS Safari hands off to the app if installed.
      * We do NOT display the URL anywhere in the UI.
      */
-    function sucessRedirectToAppzillon() {
-      console.log("→ [4] Redirect initiated:", CALLBACK_URL);
+    function successRedirectToAppzillon() {
+      console.log("→ [4] Redirect initiated:", SUCCESS_CALLBACK_URL);
       // Brief delay so the browser can flush any pending paint
       setTimeout(function () {
-        window.location.href = SUCESS_CALLBACK_URL;
+        window.location.href = SUCCESS_CALLBACK_URL;
       }, 60);
     }
     function failedRedirectToAppzillon() {
-      console.log("→ [4] Redirect initiated:", CALLBACK_URL);
+      console.log("→ [4] Redirect initiated:", FAIL_CALLBACK_URL);
       // Brief delay so the browser can flush any pending paint
       setTimeout(function () {
         window.location.href = FAIL_CALLBACK_URL;
@@ -510,7 +510,7 @@
       alert("payment done.");
 
       // alert() blocks; redirect runs only after user taps OK
-      sucessRedirectToAppzillon();
+      successRedirectToAppzillon();
     });
 
     // ── SECONDARY: Return to Appzillon — direct redirect ─────────
